@@ -14,6 +14,6 @@
     <!-- Details dialog "OK" button. Dismisses dialog. -->
     <string name="details_ok">OK</string>
 
-	<string name="app_name">NyARToolkitAndroid</string>
+	<string name="app_name">NyARToolkitAndroidLog</string>
 	<string name="search">Search</string>
 </resources>

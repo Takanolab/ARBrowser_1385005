@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="jp.androidgroup.nyartoolkit" android:versionName="2.5.4" android:versionCode="254">
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <application android:icon="@drawable/icon" android:debuggable="true" android:label="@string/app_name">
         <activity android:name=".NyARToolkitAndroidActivity" android:screenOrientation="landscape" android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
@@ -7,8 +8,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.paar.ch9.MainActivity"></activity>
         <activity android:name="QuestActivity"></activity>
+        <activity android:name="org.takanolab.ar.search.SearchActivity"></activity>
+        <activity android:name="com.paar.ch9.SensorsActivity"></activity>
+        <activity android:name="com.paar.ch9.MainActivity"></activity>
+        <activity android:name="com.paar.ch9.AugmentedActivity"></activity>
+        <activity android:name="org.takanolab.cache.irc.CachePrototypeActivity"></activity>
     </application>
 <uses-permission xmlns:android="http://schemas.android.com/apk/res/android" android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
 <uses-permission xmlns:android="http://schemas.android.com/apk/res/android" android:name="android.permission.INSTALL_PACKAGES"></uses-permission>
@@ -20,7 +25,7 @@
 <uses-permission xmlns:android="http://schemas.android.com/apk/res/android" android:name="android.permission.RESTART_PACKAGES"></uses-permission>
 
 
-
+<uses-permission android:name="android.permission.WAKE_LOCK"/>
 <uses-permission xmlns:android="http://schemas.android.com/apk/res/android" android:name="android.permission.CAMERA"></uses-permission>
 <uses-permission xmlns:android="http://schemas.android.com/apk/res/android" android:name="android.permission.ACCESS_SURFACE_FLINGER"></uses-permission>
 

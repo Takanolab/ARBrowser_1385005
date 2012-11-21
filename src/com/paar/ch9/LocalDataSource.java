@@ -44,13 +44,13 @@ public class LocalDataSource extends DataSource{
     	descriptions[1] = "Hoary Marmots are colonial animals that live in the alpine zone from 6,800 to 8,000 feet.";
     	descriptions[2] = "Elk are light brown with dark faces, necks and legs.";
 
-        Marker machingunlily = new IconMarker("Machingun Lily", 39.931269, -75.051261, 20, Color.DKGRAY, icons[0], descriptions[0]);
+        Marker machingunlily = new IconMarker("Machingun Lily", 35.485881, 139.341032, 20, Color.DKGRAY, icons[0], descriptions[0]);
         cachedMarkers.add(machingunlily);
         
-        Marker marmot = new IconMarker("Marmot", 39.94, -75.04, 200, Color.DKGRAY, icons[1], descriptions[1]);
+        Marker marmot = new IconMarker("Marmot", 35.486082, 139.341, 200, Color.DKGRAY, icons[1], descriptions[1]);
         cachedMarkers.add(marmot);
 
-        Marker elk_bull = new IconMarker("Elk bull", 39.926, -75.03, 400, Color.DKGRAY, icons[2], descriptions[2]);
+        Marker elk_bull = new IconMarker("Elk bull", 35.486231, 139.341016, 400, Color.DKGRAY, icons[2], descriptions[2]);
         cachedMarkers.add(elk_bull);
         
         return cachedMarkers;

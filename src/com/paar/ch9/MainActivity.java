@@ -83,7 +83,7 @@ public class MainActivity extends AugmentedActivity {
                 zoomLayout.setVisibility((showZoomBar)?LinearLayout.VISIBLE:LinearLayout.GONE);
                 break;
             case R.id.quest_to_cg:
-            	// change to search activity
+            	// change to NyARToolkit activity
                 intent = new Intent(MainActivity.this, NyARToolkitAndroidActivity.class);
                 startActivity(intent);
                 break;
@@ -151,8 +151,8 @@ public class MainActivity extends AugmentedActivity {
         Log.i(TAG, "Longtitude="+lon);
         Log.i(TAG, "Altitude="+alt);
         
-        final double lat2 = 48.4610462;
-        final double lon2 = 123.3107799;
+        final double lat2 = 35.48603;
+        final double lon2 = 139.341198;
         final double alt2 = 0.0;
     	try {
             exeService.execute(

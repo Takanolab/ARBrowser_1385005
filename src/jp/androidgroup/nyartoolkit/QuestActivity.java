@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 public class QuestActivity extends Activity implements OnItemClickListener{
 
@@ -43,10 +42,9 @@ public class QuestActivity extends Activity implements OnItemClickListener{
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View v, int pos, long id) {
-		TextView selectItem = (TextView)v;
 		Intent it = new Intent();
-		// 選択した文字列をセット
-		it.putExtra("selectitem", selectItem.getText().toString());
+		// 選択した位置(id)
+		it.putExtra(NyARToolkitAndroidActivity.RESULT_SELECT_ITEM_ID, pos);
 		// リザルトをセット
 		setResult(RESULT_OK, it);
 		finish();

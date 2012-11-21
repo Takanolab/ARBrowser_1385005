@@ -13,7 +13,7 @@ import android.os.Environment;
 import android.util.Log;
 
 public  class SdLog {
-	private final static String LOGDIR = Environment.getExternalStorageDirectory().getPath() + "/hoge/";
+	private final static String LOGDIR = Environment.getExternalStorageDirectory().getPath() + "/SdLog/";
 	private final static String SDFILE = LOGDIR+"log.txt";
 	private static boolean enable = true;
 	static public void put(int text) {
@@ -24,11 +24,11 @@ public  class SdLog {
 		if (!enable) return;
 		Date now = new Date();
 		BufferedWriter bw = null;
-		StackTraceElement[] ste = (new Throwable()).getStackTrace();
-		text = ste[1].getMethodName()
-			   + "("
-			 	+ ste[1].getFileName() + ":" + ste[1].getLineNumber()
-			   + ") " + text;
+//		StackTraceElement[] ste = (new Throwable()).getStackTrace();
+///		text = ste[1].getMethodName()
+//			   + "("
+//			 	+ ste[1].getFileName() + ":" + ste[1].getLineNumber()
+//			   + ") " + text;
 		try {
 			try {
 				mkdir_p(LOGDIR);
@@ -45,10 +45,10 @@ public  class SdLog {
 			e.printStackTrace();
 		}
 		try {
-			bw.append((now.getYear()+1900)+"/"+(now.getMonth()+1)+"/"+now.getDate()
-					+" "+now.getHours()+":"+now.getMinutes()+":"+now.getSeconds()+"\t"+text+"\n");
-			Log.e("log",(now.getYear()+1900)+"/"+(now.getMonth()+1)+"/"+now.getDate()
-					+" "+now.getHours()+":"+now.getMinutes()+":"+now.getSeconds()+"\t"+text);
+			bw.append((now.getYear()+1900)+"/"+(now.getMonth()+1)+"/"+now.getDate()+","
+					+now.getHours()+":"+now.getMinutes()+":"+now.getSeconds()+","+text+"\n");
+//			Log.e("log",(now.getYear()+1900)+"/"+(now.getMonth()+1)+"/"+now.getDate()
+//					+" "+now.getHours()+":"+now.getMinutes()+":"+now.getSeconds()+"\t"+text);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

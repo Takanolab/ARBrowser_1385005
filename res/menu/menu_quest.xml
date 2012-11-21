@@ -7,10 +7,10 @@
     </item>
 
     <item android:id="@+id/quest_to_cg" 
-          android:title="[3DCG]">
+          android:title="[3DCGMode]">
     </item>
     <item android:id="@+id/quest_to_search" 
-          android:title="[Search]">
+          android:title="[SearchMode]">
     </item>
     
     <item android:id="@+id/exit" 

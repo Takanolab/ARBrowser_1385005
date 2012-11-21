@@ -6,7 +6,7 @@ package jp.androidgroup.nyartoolkit;
 
 import java.util.ArrayList;
 
-import jp.nyatla.kGLModel.KGLModelData;
+import org.takanolab.kGLModel.KGLModelData;
 
 public class ModelField {
 	ArrayList<String> modelName = new ArrayList<String>();
