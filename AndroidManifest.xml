@@ -11,7 +11,8 @@
         <activity android:name="QuestActivity"></activity>
         <activity android:name="org.takanolab.ar.search.SearchActivity"></activity>
         <activity android:name="com.paar.ch9.SensorsActivity"></activity>
-        <activity android:name="com.paar.ch9.MainActivity"></activity>
+        <activity android:name="com.paar.ch9.MainActivity">
+        </activity>
         <activity android:name="com.paar.ch9.AugmentedActivity"></activity>
         <activity android:name="org.takanolab.cache.irc.CachePrototypeActivity"></activity>
     </application>

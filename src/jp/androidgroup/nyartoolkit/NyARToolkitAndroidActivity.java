@@ -291,7 +291,7 @@ public class NyARToolkitAndroidActivity extends AndSketch implements AndGLView.I
 	}
 	
 	private void setModelName(){
-		//Animal Model
+				//Animal Model
 				modelNames[0] = "alpine_ibex";
 				modelNames[1] = "bison";
 				modelNames[2] = "bighorn_sheep";
@@ -529,7 +529,12 @@ public class NyARToolkitAndroidActivity extends AndSketch implements AndGLView.I
 			Intent questintent = new Intent(jp.androidgroup.nyartoolkit.NyARToolkitAndroidActivity.this,com.paar.ch9.MainActivity.class);
 			startActivity(questintent);
 			
-			
+			try {
+				_camera_preview.onAcStop();
+			} catch (Exception e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
 			
 			return true;
 			

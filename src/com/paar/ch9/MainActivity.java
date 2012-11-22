@@ -18,6 +18,7 @@ import org.takanolab.ar.db.MyDbAdapter;
 import org.takanolab.ar.db.StopwordsHelper;
 
 import android.content.Intent;
+import android.hardware.Camera;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,6 +35,7 @@ public class MainActivity extends AugmentedActivity {
     private static final BlockingQueue<Runnable> queue = new ArrayBlockingQueue<Runnable>(1);
     private static final ThreadPoolExecutor exeService = new ThreadPoolExecutor(1, 1, 20, TimeUnit.SECONDS, queue);
 	private static final Map<String,NetworkDataSource> sources = new ConcurrentHashMap<String,NetworkDataSource>(); 
+    private static Camera camera = null;
 	
 	private MyDbAdapter mDbHelper;
 	@Override
@@ -84,13 +86,16 @@ public class MainActivity extends AugmentedActivity {
                 break;
             case R.id.quest_to_cg:
             	// change to NyARToolkit activity
-                intent = new Intent(MainActivity.this, NyARToolkitAndroidActivity.class);
-                startActivity(intent);
+                Intent cgintent = new Intent(com.paar.ch9.MainActivity.this, jp.androidgroup.nyartoolkit.NyARToolkitAndroidActivity.class);
+                startActivity(cgintent);
+                //カメラの終了
+                camera.stopPreview();
+                camera.release();
                 break;
             case R.id.quest_to_search:
             	// change to search activity
 //                intent = new Intent(MainActivity.this, SearchActivity.class);
-                startActivity(intent);
+//                startActivity(intent);
                 break;
             case R.id.exit:
                 finish();
