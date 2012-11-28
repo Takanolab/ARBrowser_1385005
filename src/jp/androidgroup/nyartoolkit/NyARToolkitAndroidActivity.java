@@ -528,14 +528,13 @@ public class NyARToolkitAndroidActivity extends AndSketch implements AndGLView.I
 		case 5:
 			Intent questintent = new Intent(jp.androidgroup.nyartoolkit.NyARToolkitAndroidActivity.this,com.paar.ch9.MainActivity.class);
 			startActivity(questintent);
-			
+			//カメラの停止
 			try {
 				_camera_preview.onAcStop();
 			} catch (Exception e) {
 				// TODO 自動生成された catch ブロック
 				e.printStackTrace();
 			}
-			
 			return true;
 			
 		case 6:

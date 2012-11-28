@@ -1,5 +1,6 @@
 package com.paar.ch9;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -86,11 +87,22 @@ public class MainActivity extends AugmentedActivity {
                 break;
             case R.id.quest_to_cg:
             	// change to NyARToolkit activity
-                Intent cgintent = new Intent(com.paar.ch9.MainActivity.this, jp.androidgroup.nyartoolkit.NyARToolkitAndroidActivity.class);
-                startActivity(cgintent);
-                //カメラの終了
-                camera.stopPreview();
-                camera.release();
+//                Intent cgintent = new Intent(com.paar.ch9.MainActivity.this, jp.androidgroup.nyartoolkit.NyARToolkitAndroidActivity.class);
+//                startActivity(cgintent);
+                //カメラの停止
+            	if( camera != null ){ 
+					camera.stopPreview();
+	                camera.setPreviewCallbackWithBuffer(null);
+	            	try {
+						camera.setPreviewDisplay(null);
+					} catch (IOException e) {
+						// TODO 自動生成された catch ブロック
+						e.printStackTrace();
+					}
+	            	camera.release();
+	                camera = null;
+            	}
+				finish();
                 break;
             case R.id.quest_to_search:
             	// change to search activity
@@ -98,7 +110,7 @@ public class MainActivity extends AugmentedActivity {
 //                startActivity(intent);
                 break;
             case R.id.exit:
-                finish();
+            	moveTaskToBack(true);
                 break;
         }
         return true;
