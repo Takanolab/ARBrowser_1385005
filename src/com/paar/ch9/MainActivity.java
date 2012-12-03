@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import jp.androidgroup.nyartoolkit.NyARToolkitAndroidActivity;
 import jp.androidgroup.nyartoolkit.R;
+import jp.androidgroup.nyartoolkit.SdLog;
 import jp.androidgroup.nyartoolkit.utils.camera.CameraPreview;
 
 import org.apache.lucene.analysis.PorterStemmer;
@@ -36,7 +37,8 @@ public class MainActivity extends AugmentedActivity {
     private static final BlockingQueue<Runnable> queue = new ArrayBlockingQueue<Runnable>(1);
     private static final ThreadPoolExecutor exeService = new ThreadPoolExecutor(1, 1, 20, TimeUnit.SECONDS, queue);
 	private static final Map<String,NetworkDataSource> sources = new ConcurrentHashMap<String,NetworkDataSource>(); 
-    private static Camera camera = null;
+    private static CameraSurface camera = null;
+    CameraPreview _camera_preview;
 	
 	private MyDbAdapter mDbHelper;
 	@Override
@@ -46,14 +48,14 @@ public class MainActivity extends AugmentedActivity {
         
         LocalDataSource localData = new LocalDataSource(this.getResources());
         ARData.addMarkers(localData.getMarkers());
-
+        
 //        NetworkDataSource twitter = new TwitterDataSource(this.getResources());
 //        sources.put("twitter",twitter);
 //        NetworkDataSource wikipedia = new WikipediaDataSource(this.getResources());
 //        sources.put("wiki",wikipedia);
-    
+        
         // Show marker
-	
+        
 	}
 
 	@Override
@@ -90,18 +92,24 @@ public class MainActivity extends AugmentedActivity {
 //                Intent cgintent = new Intent(com.paar.ch9.MainActivity.this, jp.androidgroup.nyartoolkit.NyARToolkitAndroidActivity.class);
 //                startActivity(cgintent);
                 //カメラの停止
-            	if( camera != null ){ 
-					camera.stopPreview();
-	                camera.setPreviewCallbackWithBuffer(null);
-	            	try {
-						camera.setPreviewDisplay(null);
-					} catch (IOException e) {
-						// TODO 自動生成された catch ブロック
-						e.printStackTrace();
-					}
-	            	camera.release();
-	                camera = null;
-            	}
+//				try {
+//					camera.onAcStop();
+//				} catch (Exception e) {
+//					// TODO 自動生成された catch ブロック
+//					e.printStackTrace();
+//				}
+//            	if( camera != null ){ 
+//					camera.stopPreview();
+//	                camera.setPreviewCallbackWithBuffer(null);
+//	            	try {
+//						camera.setPreviewDisplay(null);
+//					} catch (IOException e) {
+//						// TODO 自動生成された catch ブロック
+//						e.printStackTrace();
+//					}
+//	            	camera.release();
+//	                camera = null;
+//            	}
 				finish();
                 break;
             case R.id.quest_to_search:
@@ -117,6 +125,18 @@ public class MainActivity extends AugmentedActivity {
     }
 
 	@Override
+	public void onPause() {
+		// TODO 自動生成されたメソッド・スタブ
+		super.onPause();
+		try {
+			camera.onAcStop();
+		} catch (Exception e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+	}
+
+	@Override
     public void onLocationChanged(Location location) {
         super.onLocationChanged(location);
         
@@ -130,6 +150,9 @@ public class MainActivity extends AugmentedActivity {
 	protected void markerTouched(Marker marker) {
 //        Toast t = Toast.makeText(getApplicationContext(), marker.getName(), Toast.LENGTH_SHORT);
 		Toast t = Toast.makeText(getApplicationContext(), marker.getDescription(), Toast.LENGTH_SHORT);
+		
+		SdLog.put("AnnotationTouch," + marker.name);
+		
         t.setGravity(Gravity.CENTER, 0, 0);
         t.show();
         

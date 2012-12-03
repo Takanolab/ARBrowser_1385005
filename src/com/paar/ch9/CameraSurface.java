@@ -137,4 +137,14 @@ public class CameraSurface extends SurfaceView implements SurfaceHolder.Callback
         }
     	}
     }
+    public synchronized void onAcStop() throws Exception
+	{
+		if(CameraSurface.camera!=null){
+			camera.stopPreview();		
+			camera.setPreviewCallbackWithBuffer(null);
+			camera.setPreviewDisplay(null);
+			camera.release();
+			camera=null;
+		}
+	}
 }

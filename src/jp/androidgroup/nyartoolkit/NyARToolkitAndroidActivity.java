@@ -151,7 +151,7 @@ public class NyARToolkitAndroidActivity extends AndSketch implements AndGLView.I
 	 */
 	@Override
 	public void onStart()
-	{
+{
 		super.onStart();
 
 		long start = System.currentTimeMillis();
@@ -204,9 +204,7 @@ public class NyARToolkitAndroidActivity extends AndSketch implements AndGLView.I
 		//
 		// ここまで
 		//a
-
 		Log.d(TAG,"onStart Time " + (end - start) + "ms");
-
 	}
 
 	NyARAndSensor _ss;
@@ -535,11 +533,11 @@ public class NyARToolkitAndroidActivity extends AndSketch implements AndGLView.I
 				// TODO 自動生成された catch ブロック
 				e.printStackTrace();
 			}
+			SdLog.put("StartQuestMode");
 			return true;
 			
 		case 6:
 			finish();
-//			System.exit(0);
 			if(sdLogflag) SdLog.put("Finish");
 			break;
 		}
