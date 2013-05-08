@@ -81,16 +81,18 @@ public class MainActivity extends AugmentedActivity {
             case R.id.showRadar:
                 showRadar = !showRadar;
                 item.setTitle(((showRadar)? "Hide" : "Show")+" Radar");
-                break;
+                return true;
+                
             case R.id.showZoomBar:
                 showZoomBar = !showZoomBar;
                 item.setTitle(((showZoomBar)? "Hide" : "Show")+" Zoom Bar");
                 zoomLayout.setVisibility((showZoomBar)?LinearLayout.VISIBLE:LinearLayout.GONE);
-                break;
+                return true;
+                
             case R.id.quest_to_cg:
             	// change to NyARToolkit activity
-//                Intent cgintent = new Intent(com.paar.ch9.MainActivity.this, jp.androidgroup.nyartoolkit.NyARToolkitAndroidActivity.class);
-//                startActivity(cgintent);
+                Intent cgintent = new Intent(com.paar.ch9.MainActivity.this, jp.androidgroup.nyartoolkit.NyARToolkitAndroidActivity.class);
+                startActivity(cgintent);
                 //カメラの停止
 //				try {
 //					camera.onAcStop();
@@ -110,18 +112,21 @@ public class MainActivity extends AugmentedActivity {
 //	            	camera.release();
 //	                camera = null;
 //            	}
-				finish();
-                break;
+//				finish();
+                return true;
+                
             case R.id.quest_to_search:
             	// change to search activity
-//                intent = new Intent(MainActivity.this, SearchActivity.class);
-//                startActivity(intent);
-                break;
+                intent = new Intent(MainActivity.this, org.takanolab.ar.search.SearchActivity.class);
+                startActivity(intent);
+                SdLog.put("StartSearchMode");
+                return true;
+                
             case R.id.exit:
             	moveTaskToBack(true);
                 break;
         }
-        return true;
+        return false;
     }
 
 	@Override

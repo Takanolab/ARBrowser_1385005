@@ -23,6 +23,8 @@ import jp.nyatla.nyartoolkit.markersystem.NyARMarkerSystemConfig;
 import org.takanolab.kGLModel.KGLException;
 import org.takanolab.kGLModel.KGLModelData;
 
+import com.paar.ch9.MainActivity;
+
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
@@ -120,7 +122,7 @@ public class NyARToolkitAndroidActivity extends AndSketch implements AndGLView.I
 	
 	
 	// ------------------- Log -------------------
-	// Log用カウント
+	// 操作カウント
 	int count_Position = 0;
 	int count_Rotate = 0;
 	int count_Scale = 0;
@@ -288,9 +290,10 @@ public class NyARToolkitAndroidActivity extends AndSketch implements AndGLView.I
 		}
 	}
 	
+	//モデルの登録を行う
 	private void setModelName(){
 				//Animal Model
-				modelNames[0] = "alpine_ibex";
+				modelNames[0] = "tukue";
 				modelNames[1] = "bison";
 				modelNames[2] = "bighorn_sheep";
 				modelNames[3] = "cougar";
@@ -468,7 +471,8 @@ public class NyARToolkitAndroidActivity extends AndSketch implements AndGLView.I
 		menu.add(Menu.NONE, 3, Menu.NONE, "ScreenCapture");
 		menu.add(Menu.NONE, 4, Menu.NONE, "FreeMode");
 		menu.add(Menu.NONE, 5, Menu.NONE, "QuestMode");
-		menu.add(Menu.NONE, 6, Menu.NONE, "Exit");
+		menu.add(Menu.NONE, 6, Menu.NONE, "SearchMode");		
+		menu.add(Menu.NONE, 7, Menu.NONE, "Exit");
 
 		return true;
 	}
@@ -535,8 +539,15 @@ public class NyARToolkitAndroidActivity extends AndSketch implements AndGLView.I
 			}
 			SdLog.put("StartQuestMode");
 			return true;
-			
+		
 		case 6:
+			// change to search activity
+            Intent searchintent = new Intent(jp.androidgroup.nyartoolkit.NyARToolkitAndroidActivity.this, org.takanolab.ar.search.SearchActivity.class);
+            startActivity(searchintent);
+            SdLog.put("StartSearchMode");
+            return true;
+			
+		case 7:
 			finish();
 			if(sdLogflag) SdLog.put("Finish");
 			break;
@@ -636,7 +647,7 @@ public class NyARToolkitAndroidActivity extends AndSketch implements AndGLView.I
 		// モデル名配列をセット
 		it.putExtra("FixationModel", modelNames);
 		// 遷移先をセット
-		it.setClassName("jp.androidgroup.nyartoolkit","jp.androidgroup.nyartoolkit.QuestActivity");
+		it.setClassName("jp.androidgroup.nyartoolkit","jp.androidgroup.nyartoolkit.FixationModelActivity");
 		// リザルト付きアクティビティースタート
 		startActivityForResult(it, FIXATION_MODEL);
 	}

@@ -8,7 +8,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="QuestActivity"></activity>
+        <activity android:name=".FixationModelActivity"></activity>
         <activity android:name="org.takanolab.ar.search.SearchActivity"></activity>
         <activity android:name="com.paar.ch9.SensorsActivity"></activity>
         <activity android:name="com.paar.ch9.MainActivity"><intent-filter>

@@ -21,6 +21,7 @@ import com.paar.ch9.SearchDataSource;
 
 import jp.androidgroup.nyartoolkit.NyARToolkitAndroidActivity;
 import jp.androidgroup.nyartoolkit.R;
+import jp.androidgroup.nyartoolkit.SdLog;
 
 public class SearchActivity extends ListActivity {
 	
@@ -89,14 +90,18 @@ public static String[] mTitles = {
             	// change to 3dcg activity
                 intent = new Intent(SearchActivity.this, NyARToolkitAndroidActivity.class);
                 startActivity(intent);
+    			SdLog.put("Start3DCGMode");
                 break;
+                
             case R.id.search_to_quest:
             	// change to quest activity
                 intent = new Intent(SearchActivity.this, MainActivity.class);
                 startActivity(intent);
+    			SdLog.put("StartQuestMode");
                 break;
+                
             case R.id.exit:
-                finish();
+            	finish();
                 break;
         }
         return true;

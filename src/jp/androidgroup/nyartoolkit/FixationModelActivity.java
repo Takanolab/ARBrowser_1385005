@@ -10,12 +10,12 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class QuestActivity extends Activity implements OnItemClickListener{
+public class FixationModelActivity extends Activity implements OnItemClickListener{
 
 	// モデルを３つくらい、リスト表示する
 	// リスト上でモデルをクリックしたら、NyARTOolkitAndroidActivityに移行し、
 	// クリックしたモデルの3DCGを表示する
-	private static String TAG ="QuestActivity";
+	private static String TAG ="FixationModel";
 	
 	@Override
 	    public void onCreate(Bundle savedInstanceState) {
