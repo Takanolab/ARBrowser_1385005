@@ -403,7 +403,7 @@ public class NyARToolkitAndroidActivity extends AndSketch implements AndGLView.I
 			Log.d(TAG,modelNames[id] + " is NULL Model Create!");
 			model_data[id] = getCreateModel(gl, id);
 			
-			//モデルの描写完了
+			//マーカー上にモデルが描写
 			if(sdLogflag) SdLog.put("DrawModel," + modelNames[id]);
 			
 //			return;
