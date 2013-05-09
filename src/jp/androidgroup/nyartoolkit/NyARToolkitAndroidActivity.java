@@ -183,6 +183,8 @@ public class NyARToolkitAndroidActivity extends AndSketch implements AndGLView.I
 		fr.addView(this._glv, 0,new LayoutParams(screen_w,screen_h));
 		long end = System.currentTimeMillis();
 		
+		
+		
 		//
 		// 右側にView(ListLayout)を表示します
 		//
@@ -191,6 +193,8 @@ public class NyARToolkitAndroidActivity extends AndSketch implements AndGLView.I
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list, str); 
 		ListView lists = new ListView(this);
 
+		
+		
 		// 背景色を選択
 		//		listview.setBackgroundColor(Color.BLACK);
 		lists.setAdapter(adapter);
@@ -398,6 +402,10 @@ public class NyARToolkitAndroidActivity extends AndSketch implements AndGLView.I
 		if(model_data[id] == null){
 			Log.d(TAG,modelNames[id] + " is NULL Model Create!");
 			model_data[id] = getCreateModel(gl, id);
+			
+			//モデルの描写完了
+			if(sdLogflag) SdLog.put("DrawModel," + modelNames[id]);
+			
 //			return;
 		}else{
 //			Log.d(TAG,modelNames[id] + "is Not Null Texture Reload");
